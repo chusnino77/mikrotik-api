@@ -1,0 +1,17 @@
+{% load widget_tweaks %}
+<form method="post" action="{% url 'routerCreate_mikrotik' %}" class="js-router-create-form">
+    <div class="modal-header">
+        <h4 class="modal-title">Create a new connections</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="modal-body">
+        {% csrf_token %}
+        {% include 'router/form.html' %}
+    </div>
+    <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-light btn-test">Test connections</button>
+        <button type="submit" class="btn btn-outline-light">Save changes</button>
+    </div>
+</form>

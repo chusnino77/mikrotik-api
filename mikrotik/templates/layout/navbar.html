@@ -1,0 +1,49 @@
+{% load static %}
+{% url 'dashboard_mikrotik' as dashboard_url %}
+{% url 'homePage_mikrotik' router.id as home_url %}
+{% url 'clientList_mikrotik' as client_url %}
+{% url 'antenaList_mikrotik' as antena_url %}
+
+<!-- Navbar -->
+<nav class="main-header navbar navbar-expand-md navbar-dark">
+    <div class="container">
+        <a href="{% url 'dashboard_mikrotik' %}" class="navbar-brand">
+            <img src="{% static 'admin-lte/dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo"
+                class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light">Manajement<b>Client</b></span>
+        </a>
+        {% if request.path != dashboard_url %}
+        <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="{% url 'homePage_mikrotik' router.id %}"
+                        class="nav-link {% if request.path == home_url %} active {%endif%}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'clientList_mikrotik' %}"
+                        class="nav-link {% if request.path == client_url %} active {%endif%}">Clients</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'antenaList_mikrotik' %}"
+                        class="nav-link {% if request.path == antena_url %} active {%endif%}">Antena</a>
+                </li>
+            </ul>
+        </div>
+        {% endif %}
+        <!-- Right navbar links -->
+        <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
+                        class="fas fa-th-large"></i></a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+<!-- /.navbar -->

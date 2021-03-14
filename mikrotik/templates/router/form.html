@@ -1,0 +1,15 @@
+{% load widget_tweaks %}
+
+{% for field in form %}
+<div class="form-group{% if field.errors %} has-error{% endif %} row">
+    {% if field.is_hidden == False %}
+    <label for="{{ field.id_for_label }}" class="col-sm-3 col-form-label">{{ field.label }}</label>
+    {% endif %}
+    <div class="col-sm-9">
+        {% render_field field class="form-control" %}
+    </div>
+    {% for error in field.errors %}
+    <p class="help-block">{{ error }}</p>
+    {% endfor %}
+</div>
+{% endfor %}

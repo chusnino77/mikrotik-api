@@ -1,0 +1,34 @@
+{% load static %}
+{% url 'dashboard_mikrotik' as dashboard_url %}
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-white">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                            {% endfor %}
+                    </ul>
+                    {% endif %}
+                </h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                {% if request.path != dashboard_url %}
+                <!-- <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Layout</a></li>
+                    <li class="breadcrumb-item active">Top Navigation</li>
+                </ol> -->
+                {% else %}
+                <div class="breadcrumb float-sm-right">
+                    <button type="button" class="btn btn-block btn-primary js-create-router" data-url="{% url 'routerCreate_mikrotik' %}"> Tambah Router</button>
+                </div>
+                {% endif %}
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->

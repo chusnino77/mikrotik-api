@@ -1,0 +1,26 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block javascript %}
+  <script src="{% static 'mikrotik/js/router_crud.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<!-- Main content -->
+<div class="content">
+    <div class="container">
+        <div class="row router-list">
+            {% include 'router/list.html' %}
+        </div>
+    </div>
+</div>
+<!-- /.content -->
+<div class="modal fade" id="modal-router" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+{% endblock %}

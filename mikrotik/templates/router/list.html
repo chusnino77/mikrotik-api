@@ -1,0 +1,23 @@
+{% for router in routers %}
+<div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box {% if forloop.counter0|divisibleby:2 %}bg-info{% else %}bg-warning{% endif %}">
+        <div class="inner">
+            <h4>{{ router.name }}</h4>
+            <p class="mt-0 mb-0">{{ router.routerboard }} - {{ router.ip_address }}</p>
+        </div>
+        <div class="icon">
+            <i class="ion ion-wifi"></i>
+        </div>
+        <div class="row">
+            <div class="btn-group col-12">
+                <a href="{% url 'homePage_mikrotik' router.id %}"><button type="button" class="btn bg-default"><i class="fas fa-desktop mr-2"></i>Open</button></a>
+                <button type="button" class="btn bg-default js-update-router" data-url="{% url 'routerUpdate_mikrotik' router.id %}"><i class="fas fa-edit mr-2"></i>Edit</button>
+                <button type="button" class="btn bg-default js-delete-router" data-url="{% url 'routerDelete_mikrotik' router.id %}"><i class="fas fa-trash mr-2"></i>Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% empty %}
+<h4 class="m-0 text-white">Belum ditambahkan</h4>
+{% endfor %}

@@ -1,0 +1,25 @@
+
+{% for row in client %}
+<tr>
+    <th scope="row">{{ forloop.counter }}</th>
+    <td>{{ row.name }}</td>
+    <td>{{ row.service }}</td>
+    <td>{{ row.profile }}</td>
+    <td>
+        <button class="btn {% if row.disabled == 'false' %} btn-success {% else %} btn-default {% endif%} btn-sm js-enable-client" data-state="{{ row.disabled }}" data-url="{% url 'clientEnable_mikrotik' row.id %}">
+            <i class="fa {% if row.disabled == 'false' %} fa-check-square {% else %} fa-square {% endif%} mr-2"></i>
+            {% if row.disabled == 'false' %} Enabled {% else %} Disabled {% endif%}
+        </button>
+    </td>
+    <td style="width: 150px">
+        <button type="button" class="btn btn-warning btn-sm js-update-client" data-url="{% url 'clientUpdate_mikrotik' row.id %}">
+            <span class="fa fa-edit"></span> Edit
+        </button>
+        <button type="button" class="btn btn-danger btn-sm js-delete-client"
+            data-url="{% url 'clientDelete_mikrotik' row.id %}">
+            <span class="fa fa-trash"></span> Delete
+        </button>
+    </td>
+</tr>
+
+{% endfor %}

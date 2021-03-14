@@ -1,0 +1,33 @@
+<div class="modal-header">
+    <h4 class="modal-title">Ping Client {{ client.name }}</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <table class="table  table-striped table-dark client-nonactive">
+        <thead>
+            <tr>
+                <th scope="col">Status</th>
+                <th scope="col">Host</th>
+                <th scope="col">icmp_seq</th>
+                <th scope="col">ttl</th>
+                <th scope="col">time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in ping %}
+            <tr>
+                <td>{% if row.status %} {{ row.status }} {% else %} reply-from {% endif%}</td>
+                <td>{{ row.host }}</td>
+                <td>{{ row.seq }}</td>
+                <td>{{ row.ttl }}</td>
+                <td>{{ row.time }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer justify-content-between">
+    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+</div>
